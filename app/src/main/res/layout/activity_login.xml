@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/color_blue"
+    android:orientation="vertical"
+    tools:context=".activity.LoginActivity">
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_60dp"
+        android:text="LOGIN"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_30sp"
+        android:textStyle="bold|italic" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_edt_user_name"
+        android:layout_width="@dimen/width_250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:hint="Username"
+        android:inputType="text"
+        android:textColorHint="@color/color_white" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_edt_password"
+        android:layout_width="@dimen/width_250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/color_white" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:text="Login"
+        />
+
+    <TextView
+        android:id="@+id/tv_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:text="Forgot Password?"
+        android:textColor="@color/color_white" />
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_20dp"
+        android:text="Register"
+        android:textColor="@color/color_white" />
+</LinearLayout>

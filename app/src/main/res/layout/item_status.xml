@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_light_blue"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_light_blue"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_profile" />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_light_blue"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_status_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Quang Chien Pham"
+                android:textColor="@color/color_black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_status_time_created"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="20:00:44 28/11/2020"
+                android:textColor="@color/color_black" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_status_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:padding="15dp"
+        android:text="To day is a wonderful day heheeeeeeeee"
+        android:textColor="@color/color_black"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_10dp"
+        android:background="@color/color_light_blue"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_status_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:background="#7FBFF3"
+            android:drawableLeft="@drawable/ic_like"
+            android:padding="10dp"
+            android:text="Like" />
+
+        <Button
+            android:id="@+id/btn_status_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:background="#7FBFF3"
+            android:drawableLeft="@drawable/ic_comment"
+            android:padding="10dp"
+            android:text="Comment" />
+    </LinearLayout>
+</LinearLayout>

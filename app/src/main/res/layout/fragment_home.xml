@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_light_blue"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_light_blue"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_30dp"
+                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:text="Create a post"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/text_size_20sp" />
+
+            <EditText
+                android:layout_width="@dimen/height_350dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_top_20dp"
+                android:background="@color/color_white"
+                android:hint="What are you thinking?"
+                android:padding="@dimen/padding_15dp"
+                android:textColor="@color/color_black"
+                android:textColorHint="@color/color_black"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/btn_post"
+                android:layout_width="@dimen/width_100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_start_30dp"
+                android:layout_marginTop="@dimen/margin_top_10dp"
+                android:layout_marginBottom="@dimen/margin_botton_20dp"
+                android:background="@color/color_blue"
+                android:text="Post"
+                android:textColor="@color/color_black"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_blue"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_10dp"
+        android:gravity="center"
+        android:padding="@dimen/padding_15dp"
+        android:text="Edit Profile"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/text_size_30sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First Name"
+        android:textColorHint="@color/color_black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edt_first_name"
+            android:layout_width="@dimen/width_300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_top_20dp"
+            android:hint="First Name"
+            android:padding="@dimen/padding_10dp"
+            android:singleLine="true"
+            android:textColor="@color/color_black"
+            android:textColorHint="@color/color_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        android:textColorHint="@color/color_black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edt_last_name"
+            android:layout_width="@dimen/width_300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_top_10dp"
+            android:hint="Last Name"
+            android:padding="@dimen/padding_10dp"
+            android:textColor="@color/color_black"
+            android:textColorHint="@color/color_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:textColorHint="@color/color_black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edt_phone"
+            android:layout_width="@dimen/width_300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_top_10dp"
+            android:hint="Phone"
+            android:padding="@dimen/padding_10dp"
+            android:textColor="@color/color_black"
+            android:textColorHint="@color/color_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textColorHint="@color/color_black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edt_email"
+            android:layout_width="@dimen/width_300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_top_10dp"
+            android:hint="Email"
+            android:padding="@dimen/padding_10dp"
+            android:textColor="@color/color_black"
+            android:textColorHint="@color/color_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:textColorHint="@color/color_black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edt_address"
+            android:layout_width="@dimen/width_300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_top_10dp"
+            android:hint="Address"
+            android:padding="@dimen/padding_10dp"
+            android:textColor="@color/color_black"
+            android:textColorHint="@color/color_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="@color/color_black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edt_password"
+            android:layout_width="@dimen/width_300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_top_10dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="@dimen/padding_10dp"
+            android:textColor="@color/color_black"
+            android:textColorHint="@color/color_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirm Password"
+        android:textColorHint="@color/color_black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_edt_cf_password"
+            android:layout_width="@dimen/width_300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_top_10dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:padding="@dimen/padding_10dp"
+            android:textColor="@color/color_black"
+            android:textColorHint="@color/color_black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:background="@color/color_pink"
+        android:text="Update"
+        android:textStyle="bold" />
+</LinearLayout>

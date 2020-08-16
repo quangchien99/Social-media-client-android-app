@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FacebookApp</string>
+    <string-array name="question_array">
+        <item>What is your favorite book\?</item>
+        <item>What is your favorite book\?</item>
+        <item>What is your favorite food\?</item>
+        <item>What is your pet\'s name\?</item>
+        <item>What kinds of instrument do you know how to play\?</item>
+    </string-array>
+</resources>
