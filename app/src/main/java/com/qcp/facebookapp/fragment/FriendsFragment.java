@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,13 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.qcp.facebookapp.R;
 import com.qcp.facebookapp.activity.LoginActivity;
 import com.qcp.facebookapp.adapter.FriendsAdapter;
-import com.qcp.facebookapp.adapter.HomeAdapter;
 import com.qcp.facebookapp.client.APIClient;
 import com.qcp.facebookapp.interfaces.RequestAPI;
 import com.qcp.facebookapp.listener.OnItemClickedListener;
 import com.qcp.facebookapp.model.FriendList;
 import com.qcp.facebookapp.model.Profile;
-import com.qcp.facebookapp.model.Status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +91,8 @@ public class FriendsFragment extends Fragment implements OnItemClickedListener {
 
     @Override
     public void onItemClick(int position) {
-
+        Log.d("qcpTag", "Check item clicked");
+        Toast.makeText(getContext(), "Item clicked" + position, Toast.LENGTH_SHORT).show();
     }
 
     private String getProfileName() {

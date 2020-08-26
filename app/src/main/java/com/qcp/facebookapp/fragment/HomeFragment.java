@@ -2,11 +2,13 @@ package com.qcp.facebookapp.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +37,8 @@ import retrofit2.Retrofit;
 
 public class HomeFragment extends Fragment implements OnItemClickedListener {
     private static HomeFragment INSTANCE;
-
+    public static final String FONT_PATH = "fonts/Nabila.ttf";
+    private TextView tvCreatePost;
     private List<Profile> friends;
     private FriendList friendList;
     private String profileName;
@@ -59,6 +62,8 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        tvCreatePost = view.findViewById(R.id.tv_create_post);
+        setTypeface();
         rcHome = view.findViewById(R.id.rc_home);
         statuses = new ArrayList<Status>();
         profileName = getProfileName();
@@ -137,5 +142,10 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
     @Override
     public void onItemClick(int position) {
 
+    }
+
+    private void setTypeface() {
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), FONT_PATH);
+        tvCreatePost.setTypeface(typeface);
     }
 }

@@ -152,7 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:layout_marginTop="@dimen/margin_top_10dp"
         android:background="@color/color_pink"
         android:text="Update"
         android:textStyle="bold" />

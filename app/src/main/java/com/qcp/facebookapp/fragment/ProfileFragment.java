@@ -3,12 +3,14 @@ package com.qcp.facebookapp.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +37,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ProfileFragment extends Fragment {
+    public static final String FONT_PATH = "fonts/Nabila.ttf";
+    private TextView tvEditProfile;
     private TextInputEditText textInputEdtFirstName, textInputEdtLastName, textInputEdtEmail, textInputEdtPhone, textInputEdtAddress, textInputEdtPassword, textInputEdtConfirmPassword;
     private static ProfileFragment INSTANCE;
     private View view;
@@ -56,6 +60,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_profile, container, false);
         findViewById();
+        setTypeface();
         profileName = getProfileName();
         setInfo();
         return view;
@@ -118,5 +123,12 @@ public class ProfileFragment extends Fragment {
         textInputEdtPhone = view.findViewById(R.id.text_input_edt_phone);
         textInputEdtPassword = view.findViewById(R.id.text_input_edt_password);
         textInputEdtConfirmPassword = view.findViewById(R.id.text_input_edt_cf_password);
+        tvEditProfile = view.findViewById(R.id.tv_edit_profile);
+
+    }
+
+    private void setTypeface() {
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), FONT_PATH);
+        tvEditProfile.setTypeface(typeface);
     }
 }

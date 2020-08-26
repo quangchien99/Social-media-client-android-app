@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,9 +32,10 @@ import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String PROFILE_NAME = "profileName";
+    public static final String FONT_PATH = "fonts/Nabila.ttf";
     private TextInputEditText textInputEdtUsername, textInputEdtPassword;
     private Button btnLogin;
-    private TextView tvForgotPassword, tvRegister;
+    private TextView tvForgotPassword, tvRegister, tvLogin;
     private String username, password;
     private Profile profile;
 
@@ -44,10 +46,12 @@ public class LoginActivity extends AppCompatActivity {
         textInputEdtUsername = findViewById(R.id.input_edt_user_name);
         textInputEdtPassword = findViewById(R.id.input_edt_password);
         btnLogin = findViewById(R.id.btn_login);
+        tvLogin = findViewById(R.id.tv_login);
         tvForgotPassword = findViewById(R.id.tv_forgot_password);
         tvRegister = findViewById(R.id.tv_register);
         username = textInputEdtUsername.getText().toString();
         password = textInputEdtPassword.getText().toString();
+        setTypeface();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -62,7 +66,13 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Log.d("qcpTag", "Get profile");
+        tvForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -115,4 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                 .show();
     }
 
+    private void setTypeface() {
+        Typeface typeface = Typeface.createFromAsset(getAssets(), FONT_PATH);
+        tvLogin.setTypeface(typeface);
+    }
 }

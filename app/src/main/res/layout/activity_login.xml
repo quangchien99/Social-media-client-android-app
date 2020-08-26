@@ -15,9 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_60dp"
-        android:text="LOGIN"
+        android:layout_marginBottom="@dimen/margin_bottom_30dp"
+        android:text="login"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/text_size_30sp"
+        android:textSize="@dimen/text_size_60sp"
         android:textStyle="bold|italic" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -26,6 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_30dp"
+        android:drawableLeft="@drawable/ic_user_1"
+        android:drawablePadding="@dimen/drawable_padding_10dp"
         android:hint="Username"
         android:inputType="text"
         android:textColorHint="@color/color_white" />
@@ -36,6 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_30dp"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="@dimen/drawable_padding_10dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColorHint="@color/color_white" />
@@ -46,8 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_30dp"
+        android:background="@drawable/custom_button"
         android:text="Login"
-        />
+        android:textColor="@color/color_white" />
 
     <TextView
         android:id="@+id/tv_forgot_password"
@@ -56,7 +62,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_30dp"
         android:text="Forgot Password?"
-        android:textColor="@color/color_white" />
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_20sp" />
+
     <TextView
         android:id="@+id/tv_register"
         android:layout_width="wrap_content"
@@ -64,5 +72,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_20dp"
         android:text="Register"
-        android:textColor="@color/color_white" />
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_20sp" />
 </LinearLayout>

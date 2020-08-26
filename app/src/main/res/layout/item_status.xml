@@ -2,13 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_light_blue"
+    android:background="@drawable/bg_custom_layout"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="350dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_grey" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_light_blue"
         android:orientation="horizontal">
 
         <ImageView
@@ -66,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
-            android:background="#7FBFF3"
+            android:background="@drawable/custom_button"
             android:drawableLeft="@drawable/ic_like"
             android:padding="10dp"
             android:text="Like" />
@@ -76,9 +83,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:background="#7FBFF3"
+            android:background="@drawable/custom_button"
             android:drawableLeft="@drawable/ic_comment"
             android:padding="10dp"
             android:text="Comment" />
     </LinearLayout>
+
 </LinearLayout>
