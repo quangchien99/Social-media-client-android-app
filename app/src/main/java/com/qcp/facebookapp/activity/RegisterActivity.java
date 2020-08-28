@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.qcp.facebookapp.R;
@@ -77,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onResponse(Call<List<Profile>> call, Response<List<Profile>> response) {
-                Log.d("qcpTag", "Status Code onRes = " + response.code());
+                Log.d("qcpTag", "getAllProfileCode = " + response.code());
                 profiles = response.body();
                 for (Profile p : profiles) {
                     usernames.add(p.getProfileName());
@@ -104,8 +105,9 @@ public class RegisterActivity extends AppCompatActivity {
         call.enqueue(new Callback<Profile>() {
             @Override
             public void onResponse(Call<Profile> call, Response<Profile> response) {
-                Log.d("qcpTag", "Register " + response.code());
+                Log.d("qcpTag", "Register code= " + response.code());
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                Toast.makeText(getApplicationContext(), "Registered Successfully! Please log in.", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
 
@@ -117,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void showAlertDialog(String message) {
-        new AlertDialog.Builder(getApplicationContext())
+        new AlertDialog.Builder(RegisterActivity.this)
                 .setTitle("Waring")
                 .setMessage(message)
                 .setCancelable(true)
@@ -129,7 +131,6 @@ public class RegisterActivity extends AppCompatActivity {
     private void setProfile() {
         profile = new Profile();
         profile.setFirstName(inputEdtFirstName.getText().toString());
-        Log.d("qcpTag", inputEdtFirstName.getText().toString() + " ");
         profile.setLastName(inputEdtLastName.getText().toString());
         profile.setProfileName(inputEdtUserName.getText().toString());
         profile.setEmail(inputEdtEmail.getText().toString());
@@ -137,9 +138,8 @@ public class RegisterActivity extends AppCompatActivity {
         profile.setAddress(inputEdtAddress.getText().toString());
         profile.setAnswer(inputEdtAnswer.getText().toString());
         profile.setAddress(inputEdtAddress.getText().toString());
-        Log.d("qcpTag", inputEdtPassword.getText().toString() + " ");
         profile.setPassword(inputEdtPassword.getText().toString());
-        //profile.setPassword(PasswordAuthentication.hash(inputEdtPassword.getText().toString()));
+        profile.setQuestion(spnQuestion.getSelectedItem().toString());
     }
 
     private void setQuestion() {
