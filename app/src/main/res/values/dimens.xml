@@ -24,4 +24,9 @@
     <dimen name="drawable_padding_10dp">10dp</dimen>
     <dimen name="margin_bottom_30dp">30dp</dimen>
     <dimen name="text_size_60sp">60sp</dimen>
+    <dimen name="width_130dp">130dp</dimen>
+    <dimen name="height_50dp">50dp</dimen>
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="margin_top_50dp">50dp</dimen>
+    <dimen name="height_60dp">60dp</dimen>
 </resources>

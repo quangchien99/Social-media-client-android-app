@@ -22,6 +22,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_30dp"
                 android:layout_marginTop="@dimen/margin_top_30dp"
+                android:drawableLeft="@drawable/ic_thinking"
+                android:gravity="center_vertical"
                 android:text="Create a post"
                 android:textColor="@color/color_black"
                 android:textSize="@dimen/text_size_20sp" />
@@ -40,12 +42,15 @@
 
             <Button
                 android:id="@+id/btn_post"
-                android:layout_width="@dimen/width_100dp"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/width_130dp"
+                android:layout_height="@dimen/height_60dp"
                 android:layout_marginStart="@dimen/margin_start_30dp"
                 android:layout_marginTop="@dimen/margin_top_10dp"
                 android:layout_marginBottom="@dimen/margin_botton_20dp"
-                android:background="@color/color_blue"
+                android:background="@drawable/custom_button"
+                android:drawableLeft="@drawable/ic_upload"
+                android:drawablePadding="@dimen/padding_5dp"
+                android:padding="@dimen/padding_5dp"
                 android:text="Post"
                 android:textColor="@color/color_black"
                 android:textStyle="bold" />

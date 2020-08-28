@@ -7,8 +7,8 @@
 
     <View
         android:layout_width="350dp"
-        android:layout_gravity="center_horizontal"
         android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/color_grey" />
@@ -22,7 +22,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:padding="8dp"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/ic_person" />
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -70,18 +70,19 @@
 
         <Button
             android:id="@+id/btn_status_like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/width_150dp"
+            android:layout_height="@dimen/height_50dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/custom_button"
             android:drawableLeft="@drawable/ic_like"
             android:padding="10dp"
-            android:text="Like" />
+            android:text="Like"
+            android:textColor="@color/color_black" />
 
         <Button
             android:id="@+id/btn_status_comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/width_150dp"
+            android:layout_height="@dimen/height_50dp"
             android:layout_marginStart="40dp"
             android:background="@drawable/custom_button"
             android:drawableLeft="@drawable/ic_comment"

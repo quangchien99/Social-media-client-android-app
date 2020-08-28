@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">FacebookApp</string>
     <string-array name="question_array">
-        <item>What is your favorite book\?</item>
-        <item>What is your nickname\?</item>
-        <item>What is your favorite food\?</item>
-        <item>What is your pet\'s name\?</item>
-        <item>What kinds of instrument do you know how to play\?</item>
+        <item> <font fgcolor='#000000'> What is your favorite book\?</font></item>
+        <item><font fgcolor='#000000'>What is your nickname\?</font></item>
+        <item><font fgcolor='#000000'>What is your favorite food\?</font></item>
+        <item><font fgcolor='#000000'>What is your pet\'s name\?</font></item>
+        <item><font fgcolor='#000000'>What kinds of instrument do you know how to play\?</font></item>
     </string-array>
 </resources>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_blue"
+    android:background="@color/color_light_blue"
     android:orientation="vertical">
 
     <TextView
@@ -21,6 +21,7 @@
         android:id="@+id/textField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_30dp"
         android:hint="First Name"
         android:textColorHint="@color/color_black">
 
@@ -29,7 +30,6 @@
             android:layout_width="@dimen/width_300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_top_20dp"
             android:hint="First Name"
             android:padding="@dimen/padding_10dp"
             android:singleLine="true"
@@ -109,51 +109,18 @@
             android:textColorHint="@color/color_black" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textColorHint="@color/color_black">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_edt_password"
-            android:layout_width="@dimen/width_300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_top_10dp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="@dimen/padding_10dp"
-            android:textColor="@color/color_black"
-            android:textColorHint="@color/color_black" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Confirm Password"
-        android:textColorHint="@color/color_black">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_edt_cf_password"
-            android:layout_width="@dimen/width_300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_top_10dp"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:padding="@dimen/padding_10dp"
-            android:textColor="@color/color_black"
-            android:textColorHint="@color/color_black" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/width_150dp"
+        android:layout_height="@dimen/height_60dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_10dp"
-        android:background="@color/color_pink"
+        android:background="@drawable/custom_button"
+        android:drawableLeft="@drawable/ic_update2"
+        android:drawablePadding="@dimen/padding_5dp"
+        android:padding="@dimen/padding_5dp"
         android:text="Update"
+        android:textColor="@color/color_black"
         android:textStyle="bold" />
 </LinearLayout>
