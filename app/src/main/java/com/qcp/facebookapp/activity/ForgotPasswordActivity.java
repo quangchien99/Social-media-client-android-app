@@ -1,6 +1,7 @@
 package com.qcp.facebookapp.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.qcp.facebookapp.R;
 import com.qcp.facebookapp.client.APIClient;
+import com.qcp.facebookapp.constant.Const;
 import com.qcp.facebookapp.interfaces.RequestAPI;
 import com.qcp.facebookapp.model.Profile;
 
@@ -76,32 +78,30 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 if (profile != null) {
                     Log.d("qcpp", spnQuestion.getSelectedItem().toString() + "");
                     if (spnQuestion.getSelectedItem().toString().equals(profile.getQuestion()) && edtAnswer.getText().toString().equals(profile.getAnswer())) {
+                        SharedPreferences.Editor editor = getSharedPreferences(Const.PROFILE_NAME, MODE_PRIVATE).edit();
+                        editor.clear();
+                        editor.putString(Const.PROFILE_NAME, profile.getProfileName());
+                        editor.apply();
                         Intent intent = new Intent(ForgotPasswordActivity.this, ChangePasswordActivity.class);
                         startActivity(intent);
+                    } else {
+                        showAlertDialog("The answer is not match. Please try again");
                     }
                 } else {
-                    new AlertDialog.Builder(ForgotPasswordActivity.this)
-                            .setTitle("Notification")
-                            .setMessage("Invalid Username")
-                            .setCancelable(true)
-                            .show();
+                    showAlertDialog("Invalid Username");
                 }
             }
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
-                new AlertDialog.Builder(ForgotPasswordActivity.this)
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data")
-                        .setCancelable(true)
-                        .show();
+                showAlertDialog("Can't get user data");
                 Log.d("qcpTag", t.getMessage() + "");
             }
         });
     }
 
     private void showAlertDialog(String message) {
-        new AlertDialog.Builder(getApplicationContext())
+        new AlertDialog.Builder(ForgotPasswordActivity.this)
                 .setTitle("Waring")
                 .setMessage(message)
                 .setCancelable(true)

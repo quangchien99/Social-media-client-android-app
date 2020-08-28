@@ -1,10 +1,6 @@
 
 package com.qcp.facebookapp.activity;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -15,9 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.qcp.facebookapp.R;
 import com.qcp.facebookapp.client.APIClient;
+import com.qcp.facebookapp.constant.Const;
 import com.qcp.facebookapp.interfaces.RequestAPI;
 import com.qcp.facebookapp.model.Profile;
 import com.qcp.facebookapp.utils.PasswordAuthentication;
@@ -94,7 +95,8 @@ public class LoginActivity extends AppCompatActivity {
                     if (PasswordAuthentication.checkPassword(textInputEdtPassword.getText().toString(), profile.getPassword())) {
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         SharedPreferences.Editor editor = getSharedPreferences(PROFILE_NAME, MODE_PRIVATE).edit();
-                        editor.putString("profileName", profile.getProfileName());
+                        editor.clear();
+                        editor.putString(Const.PROFILE_NAME, profile.getProfileName());
                         editor.apply();
                         startActivity(intent);
                     } else {
