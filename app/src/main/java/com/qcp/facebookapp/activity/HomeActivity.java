@@ -146,6 +146,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void goToChangePassword() {
+        Intent intent = new Intent(HomeActivity.this, ChangePasswordActivity.class);
+        startActivity(intent);
     }
 
 

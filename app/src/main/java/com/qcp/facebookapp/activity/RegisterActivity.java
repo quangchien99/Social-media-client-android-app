@@ -1,9 +1,5 @@
 package com.qcp.facebookapp.activity;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.qcp.facebookapp.R;
@@ -108,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d("qcpTag", "Register code= " + response.code());
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 Toast.makeText(getApplicationContext(), "Registered Successfully! Please log in.", Toast.LENGTH_SHORT).show();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
 
