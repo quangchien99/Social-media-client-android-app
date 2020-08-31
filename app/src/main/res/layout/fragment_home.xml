@@ -29,6 +29,7 @@
                 android:textSize="@dimen/text_size_20sp" />
 
             <EditText
+                android:id="@+id/edt_post_status_content"
                 android:layout_width="@dimen/height_350dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
@@ -41,7 +42,7 @@
                 android:textStyle="italic" />
 
             <Button
-                android:id="@+id/btn_post"
+                android:id="@+id/btn_post_status"
                 android:layout_width="@dimen/width_130dp"
                 android:layout_height="@dimen/height_60dp"
                 android:layout_marginStart="@dimen/margin_start_30dp"

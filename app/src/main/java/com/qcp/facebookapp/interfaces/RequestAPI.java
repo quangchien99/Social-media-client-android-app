@@ -28,6 +28,7 @@ public interface RequestAPI {
     @GET("friendlist/{username}")
     Call<FriendList> getFriendList(@Path("username") String username);
 
+
     @PUT("profiles/{username}")
     Call<ResponseBody> updateProfile(@Path("username") String username, @Body Profile profile);
 
@@ -39,4 +40,8 @@ public interface RequestAPI {
 
     @POST("friendlist/{username}")
     Call<ResponseBody> addFriend(@Path("username") String username, @Body FriendList friendList);
+
+    @POST("statuses/")
+    Call<ResponseBody> postStatus(@Body Status status);
+
 }
