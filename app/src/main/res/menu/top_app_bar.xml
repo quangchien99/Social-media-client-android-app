@@ -8,12 +8,28 @@
         android:icon="@drawable/ic_search"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom|withText" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/more"
         android:contentDescription="Get More"
         android:icon="@drawable/ic_more"
         android:title="More"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom">
+        <menu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+            <item
+                android:id="@+id/item_change_pw"
+                android:contentDescription="Change Password"
+                android:icon="@drawable/ic_changepw"
+                android:title="Change Password"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/item_log_out"
+                android:contentDescription="Log out"
+                android:icon="@drawable/ic_logout"
+                android:title="Log out"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
 </menu>

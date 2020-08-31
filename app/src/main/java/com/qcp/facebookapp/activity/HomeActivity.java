@@ -2,23 +2,31 @@ package com.qcp.facebookapp.activity;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.qcp.facebookapp.R;
 
-public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
     public static final String PROFILE_NAME = "profileName";
     private ViewPager vpHome;
     private BottomNavigationView bottomNavigationView;
@@ -26,6 +34,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     private PagerAdapter pagerAdapter;
     private MenuItem prevMenuItem;
     private Menu menu;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +44,14 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         findViewById();
         pagerAdapter = new com.qcp.facebookapp.adapter.PagerAdapter(getSupportFragmentManager());
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setDisplayShowHomeEnabled(true);
+
+
         vpHome.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -66,9 +84,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         getMenuInflater().inflate(R.menu.top_app_bar, menu);
         this.menu = menu;
         SearchManager manager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-
         SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
-
         search.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -84,7 +100,52 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
             }
         });
+        MenuItem itemChangePassword = menu.findItem(R.id.item_change_pw);
+        MenuItem itemLogOut = menu.findItem(R.id.item_log_out);
+        itemChangePassword.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Toast.makeText(getApplicationContext(), "Changpw clicked", Toast.LENGTH_SHORT).show();
+                goToChangePassword();
+                return true;
+            }
+        });
+        itemLogOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Toast.makeText(getApplicationContext(), "Log out clicked", Toast.LENGTH_SHORT).show();
+                logOut();
+                return true;
+            }
+        });
         return true;
+    }
+
+    private void logOut() {
+        new AlertDialog.Builder(HomeActivity.this)
+                .setTitle("Logging out")
+                .setMessage("Are you sure to log out?")
+                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences.Editor editor = getSharedPreferences(PROFILE_NAME, MODE_PRIVATE).edit();
+                        editor.clear();
+                        editor.apply();
+                        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                })
+                .setPositiveButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                    }
+                })
+                .show();
+    }
+
+    private void goToChangePassword() {
     }
 
 
@@ -92,6 +153,24 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         vpHome = findViewById(R.id.vp_home);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         toolbar = findViewById(R.id.tool_bar_top);
+        navigationView = findViewById(R.id.nav_drawer);
+        drawerLayout = findViewById(R.id.layout_drawer);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                Log.d("qcpp", "Drawer is already open");
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+                Log.d("qcpp", "Drawer opened");
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
                         .setMessage("Can't get user data")
                         .setCancelable(true)
                         .show();
-                Log.d("qcpTag", t.getMessage() + "");
+                Log.d("qcpTag", t.getMessage() + "HomeFragment");
             }
         });
     }
@@ -133,7 +133,7 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
                         .setMessage("Can't get user data")
                         .setCancelable(true)
                         .show();
-                Log.d("qcpTag", t.getMessage() + "");
+                Log.d("qcpTag", t.getMessage() + "HomeFragement 1");
             }
         });
     }

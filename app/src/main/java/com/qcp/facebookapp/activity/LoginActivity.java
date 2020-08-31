@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                         .setMessage("Can't get user data")
                         .setCancelable(true)
                         .show();
-                Log.d("qcpTag", t.getMessage() + "");
+                Log.d("qcpTag", t.getMessage() + "Login act");
             }
         });
     }
