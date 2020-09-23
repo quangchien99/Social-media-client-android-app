@@ -89,8 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("qcpTag", "Status Code onRes = " + response.code());
                 profiles.add(response.body());
                 profile = profiles.get(0);
-                Log.d("qcpTag", profile.getEmail() + "");
-                Log.d("qcpTag", profile.getPassword() + "");
+//                Log.d("qcpTag", profile.getEmail() + "");
+//                Log.d("qcpTag", profile.getPassword() + "");
                 if (profile != null) {
                     if (PasswordAuthentication.checkPassword(edtPassword.getText().toString(), profile.getPassword())) {
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

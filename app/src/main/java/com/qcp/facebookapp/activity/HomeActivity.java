@@ -25,6 +25,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.qcp.facebookapp.R;
+import com.qcp.facebookapp.constant.Const;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
     public static final String PROFILE_NAME = "profileName";
@@ -89,14 +90,19 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(HomeActivity.this, "Query Inserted", Toast.LENGTH_SHORT).show();
-                Log.d("qcpp", "Check search submit" + query);
+//                Toast.makeText(HomeActivity.this, "Query Inserted", Toast.LENGTH_SHORT).show();
+//                Log.d("qcpp", "Check search submit" + query);
+                Log.d("qcpp", "Searching for" + query);
+                SharedPreferences.Editor editor = getSharedPreferences(Const.SEARCH_NAME, MODE_PRIVATE).edit();
+                editor.putString(Const.SEARCH_NAME, query);
+                editor.apply();
+                Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+                startActivity(intent);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.d("qcpp", "Check search input" + newText);
                 return true;
             }
         });

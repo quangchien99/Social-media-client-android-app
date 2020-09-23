@@ -62,7 +62,31 @@ public class FriendsFragment extends Fragment implements OnItemClickedListener {
         return view;
     }
 
-    private void getFriendList(String profileName) {
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+//    @Override
+//    public void onResume() {
+//        getActivity().registerReceiver(mReceiverLocation, new IntentFilter("friendReceiver"));
+//        super.onResume();
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        getActivity().unregisterReceiver(mReceiverLocation);
+//        super.onPause();
+//    }
+//
+//    private BroadcastReceiver mReceiverLocation = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            Log.d("qcpp","Received broadcast");
+//            getFriendList(profileName);
+//        }
+//    };
+
+    public void getFriendList(String profileName) {
         Retrofit retrofit = APIClient.getClient();
         RequestAPI requestApi = retrofit.create(RequestAPI.class);
         Call<FriendList> call = requestApi.getFriendList(profileName);
@@ -72,6 +96,7 @@ public class FriendsFragment extends Fragment implements OnItemClickedListener {
                 friendList = response.body();
                 friends = friendList.getFriend();
                 friendsAdapter = new FriendsAdapter(FriendsFragment.this, friends, getContext());
+                friendsAdapter.notifyDataSetChanged();
                 rcFriends.setLayoutManager(new LinearLayoutManager(getContext()));
                 rcFriends.setAdapter(friendsAdapter);
                 Log.d("qcpTag", "Go to get all profiles");
@@ -91,7 +116,6 @@ public class FriendsFragment extends Fragment implements OnItemClickedListener {
 
     @Override
     public void onItemClick(int position) {
-        Log.d("qcpTag", "Check item clicked");
         Toast.makeText(getContext(), "Item clicked" + position, Toast.LENGTH_SHORT).show();
     }
 

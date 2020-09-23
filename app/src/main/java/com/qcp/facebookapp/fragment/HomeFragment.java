@@ -200,8 +200,6 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
             public void onResponse(Call<List<Status>> call, Response<List<Status>> response) {
                 allStatuses = response.body();
                 getFriendList(profileName);
-                Log.d("qcpTag", "Go to get all statuses" + allStatuses.size());
-                // Log.d("qcpTag", statuses.get(3).getProfile().toString() + "");
             }
 
             @Override

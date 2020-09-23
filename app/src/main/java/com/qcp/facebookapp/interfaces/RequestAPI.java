@@ -38,8 +38,8 @@ public interface RequestAPI {
     @DELETE("friendlist/{username}/{friendUsername}")
     Call<ResponseBody> deleteFriend(@Path("username") String username, @Path("friendUsername") String friendUsername);
 
-    @POST("friendlist/{username}")
-    Call<ResponseBody> addFriend(@Path("username") String username, @Body FriendList friendList);
+    @POST("friendlist/")
+    Call<ResponseBody> addFriend(@Body FriendList friendList);
 
     @POST("statuses/")
     Call<ResponseBody> postStatus(@Body Status status);

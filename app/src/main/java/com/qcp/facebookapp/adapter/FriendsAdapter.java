@@ -13,13 +13,11 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qcp.facebookapp.R;
 import com.qcp.facebookapp.activity.LoginActivity;
 import com.qcp.facebookapp.client.APIClient;
-import com.qcp.facebookapp.fragment.FriendsFragment;
 import com.qcp.facebookapp.interfaces.RequestAPI;
 import com.qcp.facebookapp.listener.OnItemClickedListener;
 import com.qcp.facebookapp.model.FriendList;
