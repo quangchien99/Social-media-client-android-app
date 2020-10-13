@@ -1,6 +1,8 @@
 package com.qcp.facebookapp.interfaces;
 
+import com.qcp.facebookapp.model.Comment;
 import com.qcp.facebookapp.model.FriendList;
+import com.qcp.facebookapp.model.Like;
 import com.qcp.facebookapp.model.Profile;
 import com.qcp.facebookapp.model.Status;
 
@@ -44,4 +46,9 @@ public interface RequestAPI {
     @POST("statuses/")
     Call<ResponseBody> postStatus(@Body Status status);
 
+    @GET("comments")
+    Call<List<Comment>> getAllComments();
+
+    @GET("likes")
+    Call<List<Like>> getAllLikes();
 }

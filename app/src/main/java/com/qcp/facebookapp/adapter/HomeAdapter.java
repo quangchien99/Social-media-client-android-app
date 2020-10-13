@@ -49,6 +49,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         View view = LayoutInflater.from(context).inflate(R.layout.item_status, parent, false);
         return new ViewHolder(view);
     }
+    
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {

@@ -7,4 +7,6 @@
         <item><font fgcolor='#000000'>What is your pet\'s name\?</font></item>
         <item><font fgcolor='#000000'>What kinds of instrument do you know how to play\?</font></item>
     </string-array>
+    <string name="number_of_likes" formatted="false">%d likes</string>
+    <string name="number_of_comments" formatted="false">%d comments</string>
 </resources>
