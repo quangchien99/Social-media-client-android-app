@@ -93,13 +93,14 @@ public class FriendsFragment extends Fragment implements OnItemClickedListener {
         call.enqueue(new Callback<FriendList>() {
             @Override
             public void onResponse(Call<FriendList> call, Response<FriendList> response) {
+                if (response.isSuccessful()){
                 friendList = response.body();
                 friends = friendList.getFriend();
                 friendsAdapter = new FriendsAdapter(FriendsFragment.this, friends, getContext());
                 friendsAdapter.notifyDataSetChanged();
                 rcFriends.setLayoutManager(new LinearLayoutManager(getContext()));
                 rcFriends.setAdapter(friendsAdapter);
-                Log.d("qcpTag", "Go to get all profiles");
+                Log.d("qcpTag", "Go to get all profiles");}
             }
 
             @Override

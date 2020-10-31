@@ -24,9 +24,11 @@ public class Like {
     @Expose
     private List<Link> links = new ArrayList<>();
 
-    public Like(int id, String author, Date created) {
+    public Like(int id, Profile profile, Status status) {
         super();
         this.id = id;
+        this.profile = profile;
+        this.status = status;
     }
 
     public Like() {

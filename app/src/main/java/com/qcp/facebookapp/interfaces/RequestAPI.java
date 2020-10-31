@@ -51,4 +51,10 @@ public interface RequestAPI {
 
     @GET("likes")
     Call<List<Like>> getAllLikes();
+
+    @POST("likes/")
+    Call<ResponseBody> addLike(@Body Like like);
+
+    @DELETE("likes/{id}")
+    Call<ResponseBody> deleteLike(@Path("id") long id);
 }

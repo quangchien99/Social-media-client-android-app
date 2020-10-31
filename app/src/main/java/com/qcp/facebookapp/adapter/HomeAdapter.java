@@ -20,11 +20,13 @@ import com.qcp.facebookapp.interfaces.RequestAPI;
 import com.qcp.facebookapp.listener.OnItemClickedListener;
 import com.qcp.facebookapp.model.Comment;
 import com.qcp.facebookapp.model.Like;
+import com.qcp.facebookapp.model.Profile;
 import com.qcp.facebookapp.model.Status;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,7 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         View view = LayoutInflater.from(context).inflate(R.layout.item_status, parent, false);
         return new ViewHolder(view);
     }
-    
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -79,33 +81,39 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                     for (Like like : response.body()) {
                         if (like.getStatus().getId() == status.getId()) {
                             likes.add(like);
+                            likeCount = likes.size();
                         }
                     }
+                    Log.d("qcLog", "Size of status likes" + likes.size() + "profilename: " + profileName);
                     if (likes.size() == 0) {
                         holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_red, 0, 0, 0);
+                        likeCount++;
+                        addLike(profileName, status);
                     } else {
+                        ArrayList<String> profileNameLiked = new ArrayList<>();
                         for (Like like : likes) {
-                            if (like.getProfile().getProfileName().equalsIgnoreCase(profileName)) {
-                                //already liked => like
-                                Log.d("qcpTag", "DisLike");
-                                holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
-                                //Code to decline like here
-
-
-                                return;
-                            }
-                            //not like yet => like
-                            else {
-                                Log.d("qcpTag", "like");
-                                holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_red, 0, 0, 0);
-                                //Code to add like here
-                                //add like
-
-
-                            }
+                            profileNameLiked.add(like.getProfile().getProfileName());
+                        }
+                        if (profileNameLiked.contains(profileName)) {
+                            //already liked => like
+                            Log.d("qcpTag", "DisLike");
+                            holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
+                            //Code to decline like here
+                            deleteLike(likes.get(profileNameLiked.indexOf(profileName)).getId());
+                            likeCount--;
+                        }
+                        //not like yet => like
+                        else {
+                            Log.d("qcpTag", "like");
+                            holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_red, 0, 0, 0);
+                            //Code to add like here
+                            //add like
+                            addLike(profileName, status);
+                            likeCount++;
                         }
                     }
                 }
+                holder.tvNoLikes.setText(context.getString(R.string.number_of_likes, likeCount));
             }
 
             @Override
@@ -115,6 +123,60 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                         .setMessage("Can't get user data 1")
                         .setCancelable(true)
                         .show();
+            }
+        });
+    }
+
+    public void addLike(String profileName, Status status) {
+        Log.d("qcLog", "Add like");
+        Like like = new Like();
+        Retrofit retrofit = APIClient.getClient();
+        RequestAPI requestApi = retrofit.create(RequestAPI.class);
+        Call<Profile> callProfile = requestApi.getProfile(profileName);
+        callProfile.enqueue(new Callback<Profile>() {
+            @Override
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Profile profile = new Profile();
+                profile = response.body();
+                like.setProfile(profile);
+                like.setStatus(status);
+                Call<ResponseBody> callLike = requestApi.addLike(like);
+                callLike.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        Log.d("qcpLog", "Add like successfully");
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Log.d("qcpLog", "add like unsuccessfully2");
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call<Profile> call, Throwable t) {
+                Log.d("qcpLog", "add like unsuccessfull1");
+            }
+        });
+
+
+    }
+
+    public void deleteLike(long id) {
+        Log.d("qcLog", "Delete like");
+        Retrofit retrofit = APIClient.getClient();
+        RequestAPI requestApi = retrofit.create(RequestAPI.class);
+        Call<ResponseBody> call = requestApi.deleteLike(id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("qcpLog", "Delete like successfully");
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("qcpLog", "Delete like unsuccessfully");
             }
         });
     }
@@ -139,11 +201,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                         if (like.getStatus().getId() == status.getId()) {
                             likeCount++;
                             if (like.getProfile().getProfileName().equalsIgnoreCase(profileName)) {
+                                //
                                 holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_red, 0, 0, 0);
-                                continue;
+                            } else {
+                                holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
                             }
                         }
+
                     }
+
                     holder.tvNoLikes.setText(context.getString(R.string.number_of_likes, likeCount));
                     setNoComments(holder, status);
                 }

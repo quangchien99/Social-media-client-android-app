@@ -162,21 +162,23 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
         call.enqueue(new Callback<FriendList>() {
             @Override
             public void onResponse(Call<FriendList> call, Response<FriendList> response) {
-                friendList = response.body();
-                friends = friendList.getFriend();
-                Log.d("qcpTag", "Go to get friendlist" + friends.size());
-                for (Status s : allStatuses) {
-                    for (Profile p : friends) {
-                        if (s.getProfile().getProfileName().equals(p.getProfileName())) {
-                            statuses.add(s);
+                if (response.isSuccessful()) {
+                    friendList = response.body();
+                    friends = friendList.getFriend();
+                    Log.d("qcpTag", "Go to get friendlist" + friends.size());
+                    for (Status s : allStatuses) {
+                        for (Profile p : friends) {
+                            if (s.getProfile().getProfileName().equals(p.getProfileName())) {
+                                statuses.add(s);
+                            }
                         }
+                        Log.d("qcpTag", "Statuses size" + statuses.size());
                     }
-                    Log.d("qcpTag", "Statuses size" + statuses.size());
+                    Collections.reverse(statuses);
+                    homeAdapter = new HomeAdapter(HomeFragment.this, statuses, getContext());
+                    rcHome.setLayoutManager(new LinearLayoutManager(getContext()));
+                    rcHome.setAdapter(homeAdapter);
                 }
-                Collections.reverse(statuses);
-                homeAdapter = new HomeAdapter(HomeFragment.this, statuses, getContext());
-                rcHome.setLayoutManager(new LinearLayoutManager(getContext()));
-                rcHome.setAdapter(homeAdapter);
             }
 
             @Override
