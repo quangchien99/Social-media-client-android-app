@@ -2,10 +2,12 @@ package com.qcp.facebookapp.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Profile {
+public class Profile implements Serializable {
     @SerializedName("firstName")
     @Expose
     private String firstName;

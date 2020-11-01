@@ -49,6 +49,9 @@ public interface RequestAPI {
     @GET("comments")
     Call<List<Comment>> getAllComments();
 
+    @POST("comments/")
+    Call<ResponseBody> addComment(@Body Comment comment);
+
     @GET("likes")
     Call<List<Like>> getAllLikes();
 
@@ -57,4 +60,6 @@ public interface RequestAPI {
 
     @DELETE("likes/{id}")
     Call<ResponseBody> deleteLike(@Path("id") long id);
+
+
 }

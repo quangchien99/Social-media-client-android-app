@@ -3,9 +3,10 @@ package com.qcp.facebookapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class FriendList {
+public class FriendList implements Serializable {
     @SerializedName("profile")
     @Expose
     private Profile profile;

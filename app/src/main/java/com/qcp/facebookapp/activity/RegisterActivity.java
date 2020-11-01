@@ -121,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void showAlertDialog(String message) {
         new AlertDialog.Builder(RegisterActivity.this)
-                .setTitle("Waring")
+                .setTitle("Warning")
                 .setMessage(message)
                 .setCancelable(true)
                 .show();

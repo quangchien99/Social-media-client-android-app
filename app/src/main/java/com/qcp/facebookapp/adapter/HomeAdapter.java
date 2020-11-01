@@ -1,6 +1,7 @@
 package com.qcp.facebookapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qcp.facebookapp.R;
+import com.qcp.facebookapp.activity.CommentActivity;
 import com.qcp.facebookapp.activity.LoginActivity;
 import com.qcp.facebookapp.client.APIClient;
 import com.qcp.facebookapp.interfaces.RequestAPI;
@@ -63,6 +65,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 clickBtnLike(holder, status);
+            }
+        });
+        holder.btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("qcpLog", "Clicked btnComment number: " + position + " Stastus" + status.getId());
+                Intent intent = new Intent(context, CommentActivity.class);
+                intent.putExtra("Status", status);
+                context.startActivity(intent);
             }
         });
         setNoLikes(holder, status);

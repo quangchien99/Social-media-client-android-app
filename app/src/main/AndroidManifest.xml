@@ -3,6 +3,7 @@
     package="com.qcp.facebookapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,14 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.CommentActivity"></activity>
         <activity android:name=".activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity
             android:name=".activity.ForgotPasswordActivity"

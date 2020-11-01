@@ -3,10 +3,11 @@ package com.qcp.facebookapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Comment {
+public class Comment implements Serializable {
     @SerializedName("id")
     @Expose
     private long id;
@@ -86,7 +87,7 @@ public class Comment {
     }
 
     /**
-     * @param message the message to set
+     * @param comment the message to set
      */
     public void setComment(String comment) {
         this.comment = comment;

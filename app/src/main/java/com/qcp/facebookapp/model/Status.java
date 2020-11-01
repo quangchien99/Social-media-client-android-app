@@ -1,11 +1,15 @@
 package com.qcp.facebookapp.model;
 
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Status {
+public class Status implements Serializable {
     @SerializedName("id")
     @Expose
     private long id;

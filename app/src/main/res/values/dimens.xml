@@ -33,4 +33,6 @@
     <dimen name="width_50dp">50dp</dimen>
     <dimen name="height_40dp">40dp</dimen>
     <dimen name="width_170dp">170dp</dimen>
+    <dimen name="width_350dp">350dp</dimen>
+    <dimen name="text_size_13sp">13sp</dimen>
 </resources>
