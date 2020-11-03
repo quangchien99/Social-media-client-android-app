@@ -97,7 +97,7 @@ public class ShowSearchResultFragment extends Fragment implements OnItemClickedL
 
             @Override
             public void onFailure(Call<List<Profile>> call, Throwable t) {
-                showAlertDialog("Can not get data from server");
+                showAlertDialog("ShowSearchResultFragment.show():Can't get data.");
             }
         });
     }
@@ -105,22 +105,20 @@ public class ShowSearchResultFragment extends Fragment implements OnItemClickedL
     private String getProfileName() {
         SharedPreferences prefs = getContext().getSharedPreferences(LoginActivity.PROFILE_NAME, MODE_PRIVATE);
         String profileName = prefs.getString("profileName", "No name defined");
-        Log.d("qcpTag", "Search - getProfile" + profileName + "check");
+        Log.d("qcpTag", "Search - getProfile" + profileName);
         return profileName;
     }
 
     private void showAlertDialog(String message) {
         new AlertDialog.Builder(getContext())
-                .setTitle("Waring")
+                .setTitle("Warning")
                 .setMessage(message)
                 .setCancelable(true)
                 .show();
-        Log.d("qcpTag", message + " ");
     }
 
     @Override
     public void onItemClick(int position) {
-        Log.d("qcpTag", "Check item clicked");
         Toast.makeText(getContext(), "Search - Item clicked" + position, Toast.LENGTH_SHORT).show();
     }
 }

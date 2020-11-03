@@ -94,15 +94,14 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
-                showAlertDialog("Can't get user data");
-                Log.d("qcpTag", t.getMessage() + "");
+                showAlertDialog("ForgotpasswordActivity.validateProfile(): can't get data.");
             }
         });
     }
 
     private void showAlertDialog(String message) {
         new AlertDialog.Builder(ForgotPasswordActivity.this)
-                .setTitle("Waring")
+                .setTitle("Warning")
                 .setMessage(message)
                 .setCancelable(true)
                 .show();

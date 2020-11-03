@@ -96,7 +96,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                                showAlertDialog("Something happened");
+                                showAlertDialog("ChangePasswordActivity.changePassword(): can't get data.");
                             }
                         });
                     }
@@ -104,7 +104,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Profile> call, Throwable t) {
-                    showAlertDialog("Cant get data from server");
+                    showAlertDialog("ChangePasswordActivity.changePassword(): can't get data.");
                 }
             });
         }
@@ -113,11 +113,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     private void showAlertDialog(String message) {
         new AlertDialog.Builder(ChangePasswordActivity.this)
-                .setTitle("Waring")
+                .setTitle("Warning")
                 .setMessage(message)
                 .setCancelable(true)
                 .show();
-        Log.d("qcpTag", message + " ");
     }
 
     private void findViewById() {

@@ -90,8 +90,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-//                Toast.makeText(HomeActivity.this, "Query Inserted", Toast.LENGTH_SHORT).show();
-//                Log.d("qcpp", "Check search submit" + query);
                 Log.d("qcpp", "Searching for" + query);
                 SharedPreferences.Editor editor = getSharedPreferences(Const.SEARCH_NAME, MODE_PRIVATE).edit();
                 editor.putString(Const.SEARCH_NAME, query);

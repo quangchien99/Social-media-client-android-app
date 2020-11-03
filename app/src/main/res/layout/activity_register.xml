@@ -64,7 +64,7 @@
                 android:layout_marginStart="@dimen/margin_start_15dp"
                 android:layout_marginTop="@dimen/margin_top_30dp"
                 android:drawableLeft="@drawable/ic_user_1"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="UserName"
                 android:inputType="text"
                 android:textColorHint="@color/color_white" />
@@ -76,7 +76,7 @@
                 android:layout_marginStart="@dimen/margin_start_15dp"
                 android:layout_marginTop="@dimen/margin_top_30dp"
                 android:drawableLeft="@drawable/ic_address"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Address"
                 android:inputType="text"
                 android:textColorHint="@color/color_white" />
@@ -97,7 +97,7 @@
                 android:layout_marginStart="@dimen/margin_start_30dp"
                 android:layout_marginTop="@dimen/margin_top_30dp"
                 android:drawableLeft="@drawable/ic_phone"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="PhoneNumber"
                 android:inputType="number"
                 android:textColorHint="@color/color_white" />
@@ -109,7 +109,7 @@
                 android:layout_marginStart="@dimen/margin_start_30dp"
                 android:layout_marginTop="@dimen/margin_top_30dp"
                 android:drawableLeft="@drawable/ic_email"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Email"
                 android:inputType="text"
                 android:textColorHint="@color/color_white" />
@@ -121,7 +121,7 @@
                 android:layout_marginStart="@dimen/margin_start_30dp"
                 android:layout_marginTop="@dimen/margin_top_30dp"
                 android:drawableLeft="@drawable/ic_password"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Password"
                 android:inputType="text"
                 android:textColorHint="@color/color_white" />
@@ -133,7 +133,7 @@
                 android:layout_marginStart="@dimen/margin_start_30dp"
                 android:layout_marginTop="@dimen/margin_top_30dp"
                 android:drawableLeft="@drawable/ic_password"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Confirm Password"
                 android:inputType="text"
                 android:textColorHint="@color/color_white" />
@@ -144,10 +144,10 @@
         android:id="@+id/spn_questions"
         android:layout_width="@dimen/width_250dp"
         android:layout_height="wrap_content"
-        android:background="@color/color_light_blue"
-        android:popupBackground="@color/color_light_blue"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_30dp" />
+        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:background="@color/color_light_blue"
+        android:popupBackground="@color/color_light_blue" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/input_edt_answer"
@@ -156,7 +156,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_30dp"
         android:drawableLeft="@drawable/ic_answer"
-        android:drawablePadding="10dp"
+        android:drawablePadding="@dimen/drawable_padding_10dp"
         android:hint="Answer"
         android:inputType="text"
         android:textColorHint="@color/color_white" />

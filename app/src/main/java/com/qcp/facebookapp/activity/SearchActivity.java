@@ -80,7 +80,7 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickedLi
 
             @Override
             public void onFailure(Call<List<Profile>> call, Throwable t) {
-                showAlertDialog("Can not get data from server");
+                showAlertDialog("SearchActivity.show():Can't get data");
             }
         });
     }
@@ -94,7 +94,7 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickedLi
 
     private void showAlertDialog(String message) {
         new AlertDialog.Builder(getApplicationContext())
-                .setTitle("Waring")
+                .setTitle("Warning")
                 .setMessage(message)
                 .setCancelable(true)
                 .show();

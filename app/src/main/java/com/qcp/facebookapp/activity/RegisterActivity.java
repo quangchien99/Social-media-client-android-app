@@ -58,8 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                     showAlertDialog("Password must have 1 capital,1 special character and more than 8 characters!");
                 } else {
                     if (!inputEdtPassword.getText().toString().equals(inputEdtConfirmPassword.getText().toString())) {
-                        showAlertDialog("Passwords are not matched - please try again\"");
-                        Log.d("qcpTag", "BtnRegister - Passwords are not matched");
+                        showAlertDialog("Passwords are not matched - please try again!");
                     } else {
                         setProfile();
                         validateUserName();
@@ -92,8 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Profile>> call, Throwable t) {
-                showAlertDialog("Can not connect to server");
-                Log.d("qcpTag", t.getMessage() + "");
+                showAlertDialog("RegisterActivity.validateUsername():Can't get data.");
             }
         });
     }

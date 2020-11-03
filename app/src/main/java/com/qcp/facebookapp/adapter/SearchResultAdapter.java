@@ -100,14 +100,14 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
             @Override
             public void onFailure(Call<FriendList> call, Throwable t) {
-                showAlertDialog("SearchResultAdapter.setActionForButton: Can get user data");
+                showAlertDialog("SearchResultAdapter.setActionForButton: Can't get data");
             }
         });
     }
 
     private void showAlertDialog(String message) {
         new AlertDialog.Builder(context)
-                .setTitle("Waring")
+                .setTitle("Warning")
                 .setMessage(message)
                 .setCancelable(true)
                 .show();
@@ -128,7 +128,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                showAlertDialog("SearchResultAdapter.deleteFriend: Can get user data");
+                showAlertDialog("SearchResultAdapter.deleteFriend(): Can't get data");
             }
         });
     }

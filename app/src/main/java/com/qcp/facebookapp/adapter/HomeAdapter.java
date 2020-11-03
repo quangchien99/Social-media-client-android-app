@@ -95,7 +95,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                             likeCount = likes.size();
                         }
                     }
-                    Log.d("qcLog", "Size of status likes" + likes.size() + "profilename: " + profileName);
                     if (likes.size() == 0) {
                         holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_red, 0, 0, 0);
                         likeCount++;
@@ -106,19 +105,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                             profileNameLiked.add(like.getProfile().getProfileName());
                         }
                         if (profileNameLiked.contains(profileName)) {
-                            //already liked => like
-                            Log.d("qcpTag", "DisLike");
                             holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like, 0, 0, 0);
-                            //Code to decline like here
                             deleteLike(likes.get(profileNameLiked.indexOf(profileName)).getId());
                             likeCount--;
                         }
-                        //not like yet => like
                         else {
-                            Log.d("qcpTag", "like");
                             holder.btnLike.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_red, 0, 0, 0);
-                            //Code to add like here
-                            //add like
                             addLike(profileName, status);
                             likeCount++;
                         }
@@ -129,17 +121,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
             @Override
             public void onFailure(Call<List<Like>> call, Throwable t) {
-                new AlertDialog.Builder(context)
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data 1")
-                        .setCancelable(true)
-                        .show();
+                showAlertDialog("HomeAdapter.clickBtnLike(): Can't get data.");
             }
         });
     }
 
     public void addLike(String profileName, Status status) {
-        Log.d("qcLog", "Add like");
         Like like = new Like();
         Retrofit retrofit = APIClient.getClient();
         RequestAPI requestApi = retrofit.create(RequestAPI.class);
@@ -160,7 +147,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Log.d("qcpLog", "add like unsuccessfully2");
+                        showAlertDialog("HomeAdapter.addLike(): Can't get data.");
                     }
                 });
             }
@@ -168,6 +155,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
                 Log.d("qcpLog", "add like unsuccessfull1");
+                showAlertDialog("HomeAdapter.addLike(): Can't get data.");
             }
         });
 
@@ -188,6 +176,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d("qcpLog", "Delete like unsuccessfully");
+                showAlertDialog("HomeAdapter.deleteLike(): Can't connect to server.");
             }
         });
     }
@@ -195,7 +184,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private String getProfileName() {
         SharedPreferences prefs = context.getSharedPreferences(LoginActivity.PROFILE_NAME, Context.MODE_PRIVATE);
         String profileName = prefs.getString("profileName", "No name defined");
-        Log.d("qcpTag", "getProfile" + profileName + "check");
         return profileName;
     }
 
@@ -228,11 +216,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
             @Override
             public void onFailure(Call<List<Like>> call, Throwable t) {
-                new AlertDialog.Builder(context)
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data 1")
-                        .setCancelable(true)
-                        .show();
+                showAlertDialog("HomeAdapter.setNoLikes(): Can't get data.");
             }
         });
 
@@ -258,11 +242,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
             @Override
             public void onFailure(Call<List<Comment>> call, Throwable t) {
-                new AlertDialog.Builder(context)
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data 1")
-                        .setCancelable(true)
-                        .show();
+                showAlertDialog("HomeAdapter.setNoComments(): Can't get data.");
             }
         });
     }
@@ -270,6 +250,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return statuses.size();
+    }
+
+    private void showAlertDialog(String message) {
+        new AlertDialog.Builder(context)
+                .setTitle("Warning")
+                .setMessage(message)
+                .setCancelable(true)
+                .show();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

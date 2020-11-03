@@ -119,7 +119,7 @@ public class ProfileFragment extends Fragment {
 
     private void showAlertDialog(String message) {
         new AlertDialog.Builder(getContext())
-                .setTitle("Waring")
+                .setTitle("Warning")
                 .setMessage(message)
                 .setCancelable(true)
                 .show();
@@ -146,24 +146,23 @@ public class ProfileFragment extends Fragment {
                     textInputEdtAddress.setText(profile.getAddress());
                     textInputEdtPhone.setText(profile.getPhoneNumber());
                 } else {
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Waring")
-                            .setMessage("Can't get user data - check")
-                            .setCancelable(true)
-                            .show();
+                    showAlert("ProfileFragment.setInfo(): Error Happened! Please try again.");
                 }
             }
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
-                new AlertDialog.Builder(getContext())
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data")
-                        .setCancelable(true)
-                        .show();
-                Log.d("qcpTag", t.getMessage() + "");
+                showAlert("ProfileFragment.setInfo(): Can't get data");
             }
         });
+    }
+
+    private void showAlert(String message) {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Warning")
+                .setMessage("Can't get user data")
+                .setCancelable(true)
+                .show();
     }
 
     private String getProfileName() {

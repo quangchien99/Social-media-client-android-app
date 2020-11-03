@@ -95,14 +95,14 @@ public class CommentActivity extends AppCompatActivity implements Serializable {
 
                     @Override
                     public void onFailure(Call call, Throwable t) {
-
+                        showAlertDialog("CommentActivity.postComment(): can't get data.");
                     }
                 });
             }
 
             @Override
             public void onFailure(Call call, Throwable t) {
-
+                showAlertDialog("CommentActivity.postComment(): can't get data.");
             }
         });
     }
@@ -156,7 +156,7 @@ public class CommentActivity extends AppCompatActivity implements Serializable {
 
             @Override
             public void onFailure(Call<List<Comment>> call, Throwable t) {
-
+                showAlertDialog("CommentActivity.getComment(): can't get data.");
             }
         });
     }

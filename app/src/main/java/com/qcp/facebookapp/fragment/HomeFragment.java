@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
 
     private void postStatus() {
         if (edtStatusContent.getText().toString().isEmpty()) {
-            showAlertDialog("Please fill in the content of the status!");
+            showAlert("HomeFragment.postStatus(): Can't get data.");
         } else {
             postStatusToServer();
         }
@@ -114,33 +114,24 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
                             Toast.makeText(getContext(), "Status posted successfully!", Toast.LENGTH_SHORT).show();
                             edtStatusContent.setText(null);
                             statuses.add(0, status);
-                            //statuses.add(status);
                             homeAdapter.notifyDataSetChanged();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        showAlertDialog("postStatus: can not get data from server");
+                        showAlert("HomeFragment.postStatusToServer(): Can't get data.");
                     }
                 });
             }
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
-                showAlertDialog("getProfile: Can not get data from server ! Try again!");
+                showAlert("HomeFragment.postStatusToServer(): Can't get data.");
             }
         });
     }
 
-    private void showAlertDialog(String message) {
-        new AlertDialog.Builder(getContext())
-                .setTitle("Waring")
-                .setMessage(message)
-                .setCancelable(true)
-                .show();
-        Log.d("qcpTag", message + " ");
-    }
 
     private void findViewById() {
         rcHome = view.findViewById(R.id.rc_home);
@@ -183,12 +174,7 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
 
             @Override
             public void onFailure(Call<FriendList> call, Throwable t) {
-                new AlertDialog.Builder(getContext())
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data")
-                        .setCancelable(true)
-                        .show();
-                Log.d("qcpTag", t.getMessage() + "HomeFragment");
+                showAlert("HomeFragment.getFriendList(): Can't get data.");
             }
         });
     }
@@ -206,17 +192,18 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
 
             @Override
             public void onFailure(Call<List<Status>> call, Throwable t) {
-                new AlertDialog.Builder(getContext())
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data")
-                        .setCancelable(true)
-                        .show();
-                Log.d("qcpTag", t.getMessage() + "HomeFragement 1");
+                showAlert("HomeFragment.getStatus(): Can't get data.");
             }
         });
     }
 
-
+    private void showAlert(String message){
+        new AlertDialog.Builder(getContext())
+                .setTitle("Warning")
+                .setMessage("Can't get user data")
+                .setCancelable(true)
+                .show();
+    }
     @Override
     public void onItemClick(int position) {
 

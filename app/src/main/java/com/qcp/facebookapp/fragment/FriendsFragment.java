@@ -66,25 +66,6 @@ public class FriendsFragment extends Fragment implements OnItemClickedListener {
     public void onStart() {
         super.onStart();
     }
-//    @Override
-//    public void onResume() {
-//        getActivity().registerReceiver(mReceiverLocation, new IntentFilter("friendReceiver"));
-//        super.onResume();
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        getActivity().unregisterReceiver(mReceiverLocation);
-//        super.onPause();
-//    }
-//
-//    private BroadcastReceiver mReceiverLocation = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            Log.d("qcpp","Received broadcast");
-//            getFriendList(profileName);
-//        }
-//    };
 
     public void getFriendList(String profileName) {
         Retrofit retrofit = APIClient.getClient();
@@ -93,14 +74,14 @@ public class FriendsFragment extends Fragment implements OnItemClickedListener {
         call.enqueue(new Callback<FriendList>() {
             @Override
             public void onResponse(Call<FriendList> call, Response<FriendList> response) {
-                if (response.isSuccessful()){
-                friendList = response.body();
-                friends = friendList.getFriend();
-                friendsAdapter = new FriendsAdapter(FriendsFragment.this, friends, getContext());
-                friendsAdapter.notifyDataSetChanged();
-                rcFriends.setLayoutManager(new LinearLayoutManager(getContext()));
-                rcFriends.setAdapter(friendsAdapter);
-                Log.d("qcpTag", "Go to get all profiles");}
+                if (response.isSuccessful()) {
+                    friendList = response.body();
+                    friends = friendList.getFriend();
+                    friendsAdapter = new FriendsAdapter(FriendsFragment.this, friends, getContext());
+                    friendsAdapter.notifyDataSetChanged();
+                    rcFriends.setLayoutManager(new LinearLayoutManager(getContext()));
+                    rcFriends.setAdapter(friendsAdapter);
+                }
             }
 
             @Override

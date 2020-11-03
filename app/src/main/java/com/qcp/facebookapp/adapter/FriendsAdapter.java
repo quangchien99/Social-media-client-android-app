@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qcp.facebookapp.R;
+import com.qcp.facebookapp.activity.ChangePasswordActivity;
 import com.qcp.facebookapp.activity.LoginActivity;
 import com.qcp.facebookapp.client.APIClient;
 import com.qcp.facebookapp.interfaces.RequestAPI;
@@ -132,26 +133,23 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
                         @Override
                         public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            new AlertDialog.Builder(context)
-                                    .setTitle("Waring")
-                                    .setMessage("Can't get user data 0")
-                                    .setCancelable(true)
-                                    .show();
-                            Log.d("qcpTag", t.getMessage() + "");
+                            showAlertDialog("FriendAdapter.deleteFriend(): Can connect to server.");
                         }
                     });
                 }
 
                 @Override
                 public void onFailure(Call<FriendList> call, Throwable t) {
-                    new AlertDialog.Builder(context)
-                            .setTitle("Waring")
-                            .setMessage("Can't get user data 1")
-                            .setCancelable(true)
-                            .show();
-                    Log.d("qcpTag", t.getMessage() + "");
+                    showAlertDialog("FriendAdapter.deleteFriend(): Can connect to server.");
                 }
             });
+        }
+        private void showAlertDialog(String message) {
+            new AlertDialog.Builder(context)
+                    .setTitle("Warning")
+                    .setMessage(message)
+                    .setCancelable(true)
+                    .show();
         }
     }
 }

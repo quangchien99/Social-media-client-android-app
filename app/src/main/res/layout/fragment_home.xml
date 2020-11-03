@@ -7,7 +7,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="@dimen/height_450dp"
         android:scrollbars="none">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,7 +31,7 @@
             <EditText
                 android:id="@+id/edt_post_status_content"
                 android:layout_width="@dimen/height_350dp"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/height_100dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_top_20dp"
                 android:background="@color/color_white"

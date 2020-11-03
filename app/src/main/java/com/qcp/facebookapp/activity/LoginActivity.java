@@ -89,8 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("qcpTag", "Status Code onRes = " + response.code());
                 profiles.add(response.body());
                 profile = profiles.get(0);
-//                Log.d("qcpTag", profile.getEmail() + "");
-//                Log.d("qcpTag", profile.getPassword() + "");
                 if (profile != null) {
                     if (PasswordAuthentication.checkPassword(edtPassword.getText().toString(), profile.getPassword())) {
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -109,24 +107,22 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
-                new AlertDialog.Builder(LoginActivity.this)
-                        .setTitle("Waring")
-                        .setMessage("Can't get user data")
-                        .setCancelable(true)
-                        .show();
-                Log.d("qcpTag", t.getMessage() + "Login act");
+                showAlertDialog("LoginActivity.login(): Can't get data.");
             }
         });
     }
 
     public void loginError() {
+        showAlertDialog("Invalid Username or Password");
+    }
+    private void showAlertDialog(String message) {
         new AlertDialog.Builder(LoginActivity.this)
-                .setTitle("Notification")
-                .setMessage("Invalid Username or Password")
+                .setTitle("Warning")
+                .setMessage(message)
                 .setCancelable(true)
                 .show();
+        Log.d("qcpTag", message + " ");
     }
-
     private void setTypeface() {
         Typeface typeface = Typeface.createFromAsset(getAssets(), FONT_PATH);
         tvLogin.setTypeface(typeface);
