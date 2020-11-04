@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -61,10 +62,10 @@ public class CommentActivity extends AppCompatActivity implements Serializable {
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtComment.getText().toString().isEmpty()){
+                if (edtComment.getText().toString().isEmpty()) {
                     showAlertDialog("Please fill in your comment!");
-                }else{
-                    Log.d("qcpLog","Posting comment here");
+                } else {
+                    Log.d("qcpLog", "Posting comment here");
                     postComment();
                 }
             }
@@ -87,7 +88,7 @@ public class CommentActivity extends AppCompatActivity implements Serializable {
                 callPostComment.enqueue(new Callback() {
                     @Override
                     public void onResponse(Call call, Response response) {
-                        Log.d("qcpLog","Posting comment successfully");
+                        Log.d("qcpLog", "Posting comment successfully");
                         edtComment.setText(null);
                         comments.add(comment);
                         commentAdapter.notifyDataSetChanged();
@@ -114,6 +115,7 @@ public class CommentActivity extends AppCompatActivity implements Serializable {
                 .setCancelable(true)
                 .show();
     }
+
     private void findViewById() {
         rcComments = findViewById(R.id.rc_comments);
         btnComment = findViewById(R.id.btn_status_comment);
@@ -130,12 +132,14 @@ public class CommentActivity extends AppCompatActivity implements Serializable {
         tvStatusCreated.setText(status.getCreated());
         tvStatusContent.setText(status.getStatus());
     }
+
     private String getProfileName() {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(LoginActivity.PROFILE_NAME, Context.MODE_PRIVATE);
         String profileName = prefs.getString("profileName", "No name defined");
         Log.d("qcpTag", "getProfile" + profileName + "check");
         return profileName;
     }
+
     private void getComments() {
         Retrofit retrofit = APIClient.getClient();
         RequestAPI requestApi = retrofit.create(RequestAPI.class);
@@ -143,15 +147,16 @@ public class CommentActivity extends AppCompatActivity implements Serializable {
         call.enqueue(new Callback<List<Comment>>() {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
-                for(Comment c : response.body()){
-                    if (c.getStatus().getId()==status.getId()){
+                for (Comment c : response.body()) {
+                    if (c.getStatus().getId() == status.getId()) {
                         comments.add(c);
                     }
                 }
-                commentAdapter = new CommentAdapter(comments,getApplicationContext());
+                commentAdapter = new CommentAdapter(comments, getApplicationContext());
                 commentAdapter.notifyDataSetChanged();
                 rcComments.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 rcComments.setAdapter(commentAdapter);
+
             }
 
             @Override

@@ -1,6 +1,8 @@
 package com.qcp.facebookapp.fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -66,6 +68,13 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
     public HomeFragment() {
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (homeAdapter != null) {
+            homeAdapter.notifyDataSetChanged();
+        }
+    }
 
     @Nullable
     @Override
@@ -109,7 +118,6 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
                 callPostStatus.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        Log.d("qcpp", "Post status code: " + response.code());
                         if (response.code() == 201) {
                             Toast.makeText(getContext(), "Status posted successfully!", Toast.LENGTH_SHORT).show();
                             edtStatusContent.setText(null);
@@ -142,7 +150,6 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
     private String getProfileName() {
         SharedPreferences prefs = getContext().getSharedPreferences(LoginActivity.PROFILE_NAME, Context.MODE_PRIVATE);
         String profileName = prefs.getString("profileName", "No name defined");
-        Log.d("qcpTag", "getProfile" + profileName + "check");
         return profileName;
     }
 
@@ -156,14 +163,12 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
                 if (response.isSuccessful()) {
                     friendList = response.body();
                     friends = friendList.getFriend();
-                    Log.d("qcpTag", "Go to get friendlist" + friends.size());
                     for (Status s : allStatuses) {
                         for (Profile p : friends) {
                             if (s.getProfile().getProfileName().equals(p.getProfileName())) {
                                 statuses.add(s);
                             }
                         }
-                        Log.d("qcpTag", "Statuses size" + statuses.size());
                     }
                     Collections.reverse(statuses);
                     homeAdapter = new HomeAdapter(HomeFragment.this, statuses, getContext());
@@ -197,13 +202,14 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
         });
     }
 
-    private void showAlert(String message){
+    private void showAlert(String message) {
         new AlertDialog.Builder(getContext())
                 .setTitle("Warning")
                 .setMessage("Can't get user data")
                 .setCancelable(true)
                 .show();
     }
+
     @Override
     public void onItemClick(int position) {
 

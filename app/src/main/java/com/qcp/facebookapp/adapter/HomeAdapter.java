@@ -1,5 +1,6 @@
 package com.qcp.facebookapp.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.qcp.facebookapp.R;
@@ -39,8 +42,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private OnItemClickedListener onItemClickedListener;
     private List<Status> statuses;
     private Context context;
-
-    public HomeAdapter(OnItemClickedListener onItemClickedListener, List<Status> statuses, Context context) {
+    public HomeAdapter( OnItemClickedListener onItemClickedListener, List<Status> statuses, Context context) {
         this.onItemClickedListener = onItemClickedListener;
         this.statuses = statuses;
         this.context = context;
