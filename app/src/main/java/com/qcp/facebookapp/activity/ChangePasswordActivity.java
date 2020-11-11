@@ -76,8 +76,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Profile> call, Response<Profile> response) {
                     profile = response.body();
-                    Log.d("qcp", "ChangePasswordAct: check oldpassword is:" + profile.getPassword());
-//                    if (edtPassword.getText().toString().equals(profile.getPassword())) {
                     if (PasswordAuthentication.checkPassword(edtPassword.getText().toString(), profile.getPassword())) {
                         showAlertDialog("Password is the same with the current one! Try another !");
                     } else {
@@ -87,7 +85,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         callChangePw.enqueue(new Callback<ResponseBody>() {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                Log.d("qcpp", "ChangePassword:" + response.code());
                                 Toast.makeText(getApplicationContext(), "Change Password Successfully!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(ChangePasswordActivity.this, LoginActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

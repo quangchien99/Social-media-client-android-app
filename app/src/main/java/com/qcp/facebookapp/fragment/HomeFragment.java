@@ -169,6 +169,9 @@ public class HomeFragment extends Fragment implements OnItemClickedListener {
                                 statuses.add(s);
                             }
                         }
+                        if(s.getProfile().getProfileName().equals(profileName)){
+                            statuses.add(s);
+                        }
                     }
                     Collections.reverse(statuses);
                     homeAdapter = new HomeAdapter(HomeFragment.this, statuses, getContext());

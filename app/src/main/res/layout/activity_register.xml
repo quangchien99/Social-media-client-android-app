@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:layout_marginTop="@dimen/margin_top_10dp"
         android:text="Create an account"
         android:textColor="@color/color_white"
         android:textSize="@dimen/text_size_30sp"
@@ -21,6 +21,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@color/color_blue"
         android:orientation="horizontal"
         tools:context=".activity.RegisterActivity">
@@ -35,51 +36,55 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_first_name"
-                android:layout_width="@dimen/width_175dp"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_15dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_user_1"
                 android:drawablePadding="10dp"
                 android:hint="FirstName"
                 android:inputType="text"
-                android:textColorHint="@color/color_white" />
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_last_name"
-                android:layout_width="@dimen/width_175dp"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_15dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_user_1"
                 android:drawablePadding="10dp"
                 android:hint="LastName"
                 android:inputType="text"
-                android:textColorHint="@color/color_white" />
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_user_name"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_15dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_user_1"
                 android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="UserName"
                 android:inputType="text"
-                android:textColorHint="@color/color_white" />
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_address"
-                android:layout_width="@dimen/width_175dp"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_15dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_address"
                 android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Address"
                 android:inputType="text"
-                android:textColorHint="@color/color_white" />
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -92,51 +97,55 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_phone"
-                android:layout_width="@dimen/width_175dp"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_30dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_phone"
                 android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="PhoneNumber"
                 android:inputType="number"
-                android:textColorHint="@color/color_white" />
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_email"
-                android:layout_width="@dimen/width_175dp"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_30dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_email"
                 android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Email"
                 android:inputType="text"
-                android:textColorHint="@color/color_white" />
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_password"
-                android:layout_width="@dimen/width_175dp"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_30dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Password"
-                android:inputType="text"
-                android:textColorHint="@color/color_white" />
+                android:inputType="textPassword"
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_edt_confirm_password"
-                android:layout_width="@dimen/width_175dp"
+                android:layout_width="@dimen/width_130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_start_30dp"
-                android:layout_marginTop="@dimen/margin_top_30dp"
+                android:layout_marginTop="@dimen/margin_top_20dp"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="@dimen/drawable_padding_10dp"
                 android:hint="Confirm Password"
-                android:inputType="text"
-                android:textColorHint="@color/color_white" />
+                android:inputType="textPassword"
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/text_size_12sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -145,7 +154,7 @@
         android:layout_width="@dimen/width_250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:layout_marginTop="@dimen/margin_top_20dp"
         android:background="@color/color_light_blue"
         android:popupBackground="@color/color_light_blue" />
 
@@ -154,7 +163,7 @@
         android:layout_width="@dimen/width_250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:layout_marginTop="@dimen/margin_top_20dp"
         android:drawableLeft="@drawable/ic_answer"
         android:drawablePadding="@dimen/drawable_padding_10dp"
         android:hint="Answer"
@@ -166,7 +175,7 @@
         android:layout_width="@dimen/width_150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margin_top_30dp"
+        android:layout_marginTop="@dimen/margin_top_20dp"
         android:background="@drawable/bg_custom_layout"
         android:drawableLeft="@drawable/ic_register"
         android:text="Register"
