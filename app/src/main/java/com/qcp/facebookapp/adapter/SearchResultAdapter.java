@@ -61,6 +61,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
     }
 
     public void setActionForButton(Viewholder holder, Profile profile, int position) {
+        Toast.makeText(context, "Clicked", Toast.LENGTH_LONG);
         Retrofit retrofit = APIClient.getClient();
         RequestAPI requestApi = retrofit.create(RequestAPI.class);
         Call<FriendList> call = requestApi.getFriendList(profileName);
@@ -78,11 +79,11 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
                 });
                 for (Profile profile1 : friends) {
                     if (profile.getProfileName().equals(profile1.getProfileName())) {
-                        holder.btnOption.setText("UnFriend");
+                        holder.btnOption.setText("UNFRIEND");
                         holder.btnOption.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_unfriend, 0, 0, 0);
                     }
                     if (!profile.getProfileName().equals(profile1.getProfileName())) {
-                        holder.btnOption.setText("Add friend");
+                        holder.btnOption.setText("ADD FRIEND");
                         holder.btnOption.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_friend, 0, 0, 0);
                     }
                 }
@@ -91,8 +92,12 @@ public class SearchResultAdapter extends RecyclerView.Adapter<SearchResultAdapte
                     public void onClick(View view) {
                         if (holder.btnOption.getText().toString().equalsIgnoreCase("UnFriend")) {
                             deleteFriend(position);
+                            holder.btnOption.setText("ADD FRIEND");
+                            holder.btnOption.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_friend, 0, 0, 0);
                         } else {
                             addFriend(profile);
+                            holder.btnOption.setText("UNFRIEND");
+                            holder.btnOption.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_unfriend, 0, 0, 0);
                         }
                     }
                 });

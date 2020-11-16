@@ -104,7 +104,5 @@ public class SearchActivity extends AppCompatActivity implements OnItemClickedLi
 
     @Override
     public void onItemClick(int position) {
-        Log.d("qcpTag", "Check item clicked");
-        Toast.makeText(getApplicationContext(), "Search - Item clicked" + position, Toast.LENGTH_SHORT).show();
     }
 }

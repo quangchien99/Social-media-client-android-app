@@ -24,7 +24,7 @@
 
         <Button
             android:id="@+id/btn_search_result_option"
-            android:layout_width="@dimen/width_170dp"
+            android:layout_width="@dimen/width_150dp"
             android:layout_height="@dimen/height_50dp"
             android:background="@drawable/custom_button"
             android:drawableLeft="@drawable/ic_add_friend"
