@@ -5,14 +5,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +29,18 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.qcp.facebookapp.R;
+import com.qcp.facebookapp.client.APIClient;
 import com.qcp.facebookapp.constant.Const;
+import com.qcp.facebookapp.interfaces.RequestAPI;
+import com.qcp.facebookapp.model.Profile;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
     public static final String PROFILE_NAME = "profileName";
@@ -37,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     private Menu menu;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    private String profileName;
+    private TextView tvProfileName, tvProfileEmail, tvProfilePhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +63,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         pagerAdapter = new com.qcp.facebookapp.adapter.PagerAdapter(getSupportFragmentManager());
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         navigationView.setNavigationItemSelectedListener(this);
+        profileName = getProfileName();
+        setInfoHeaderNav();
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
@@ -80,6 +99,57 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         vpHome.setAdapter(pagerAdapter);
     }
 
+    public void setInfoHeaderNav() {
+        View header = navigationView.getHeaderView(0);
+        tvProfileName = header.findViewById(R.id.tv_profile_name);
+        tvProfileEmail = header.findViewById(R.id.tv_profile_email);
+        tvProfilePhone = header.findViewById(R.id.tv_profile_phone);
+        setInfo();
+    }
+
+    private String getProfileName() {
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences(LoginActivity.PROFILE_NAME, Context.MODE_PRIVATE);
+        String profileName = prefs.getString("profileName", "No name defined");
+        return profileName;
+    }
+
+    private void setInfo() {
+        final List<Profile> profiles = new ArrayList<Profile>();
+        Retrofit retrofit = APIClient.getClient();
+        RequestAPI requestApi = retrofit.create(RequestAPI.class);
+        Call<Profile> call = requestApi.getProfile(profileName);
+        call.enqueue(new Callback<Profile>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onResponse(Call<Profile> call, Response<Profile> response) {
+                Log.d("qcpTag", "Status Code onRes = " + response.code());
+                profiles.add(response.body());
+                Profile profile = profiles.get(0);
+                if (profile != null) {
+                    Log.d("qcpTag", "getProfile = " + profile.getFirstName());
+                    tvProfileName.setText(profile.getFirstName() + " " + profile.getLastName());
+                    tvProfileEmail.setText(profile.getEmail());
+                    tvProfilePhone.setText(profile.getPhoneNumber());
+                } else {
+                    showAlert("ProfileFragment.setInfo(): Error Happened! Please try again.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Profile> call, Throwable t) {
+                showAlert("ProfileFragment.setInfo(): Can't get data");
+            }
+        });
+    }
+
+    private void showAlert(String message) {
+        new AlertDialog.Builder(getApplicationContext())
+                .setTitle("Warning")
+                .setMessage("Can't get user data")
+                .setCancelable(true)
+                .show();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_app_bar, menu);
@@ -95,6 +165,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 editor.putString(Const.SEARCH_NAME, query);
                 editor.apply();
                 Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+                search.setQuery(null, false);
                 startActivity(intent);
                 return false;
             }
@@ -109,7 +180,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         itemChangePassword.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Toast.makeText(getApplicationContext(), "Changpw clicked", Toast.LENGTH_SHORT).show();
                 goToChangePassword();
                 return true;
             }
@@ -117,7 +187,6 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         itemLogOut.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Toast.makeText(getApplicationContext(), "Log out clicked", Toast.LENGTH_SHORT).show();
                 logOut();
                 return true;
             }
@@ -167,12 +236,10 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                Log.d("qcpp", "Drawer is already open");
                 drawerLayout.closeDrawer(GravityCompat.START);
 
             } else {
                 drawerLayout.openDrawer(GravityCompat.START);
-                Log.d("qcpp", "Drawer opened");
             }
             return true;
         }

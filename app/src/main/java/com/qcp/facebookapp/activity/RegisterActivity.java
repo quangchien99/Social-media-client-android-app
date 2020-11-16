@@ -1,6 +1,7 @@
 package com.qcp.facebookapp.activity;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -31,6 +33,8 @@ import retrofit2.Retrofit;
 
 
 public class RegisterActivity extends AppCompatActivity {
+    public static final String FONT_PATH = "fonts/Nabila.ttf";
+    private TextView tvCreateAccount;
     private TextInputEditText inputEdtFirstName, inputEdtLastName, inputEdtUserName, inputEdtEmail, inputEdtPhoneNumber, inputEdtAddress, inputEdtPassword, inputEdtConfirmPassword, inputEdtAnswer;
     private Button btnRegister;
     private Spinner spnQuestion;
@@ -42,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         findViewById();
+        setTypeface();
         setQuestion();
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -148,6 +153,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void findViewById() {
+        tvCreateAccount = findViewById(R.id.tv_create_account);
         inputEdtFirstName = findViewById(R.id.input_edt_first_name);
         inputEdtLastName = findViewById(R.id.input_edt_last_name);
         inputEdtUserName = findViewById(R.id.input_edt_user_name);
@@ -159,6 +165,10 @@ public class RegisterActivity extends AppCompatActivity {
         inputEdtAnswer = findViewById(R.id.input_edt_answer);
         spnQuestion = findViewById(R.id.spn_questions);
         btnRegister = findViewById(R.id.btn_register);
+    }
+    private void setTypeface() {
+        Typeface typeface = Typeface.createFromAsset(getAssets(), FONT_PATH);
+        tvCreateAccount.setTypeface(typeface);
     }
 
 }

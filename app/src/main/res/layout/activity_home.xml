@@ -27,7 +27,7 @@
                     android:id="@+id/tool_bar_top"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="@color/color_pink"
+                    android:background="@color/color_dark_blue"
                     app:menu="@menu/top_app_bar"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
                     app:title="Social Media App" />
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/color_pink"
+            android:background="@color/color_dark_blue"
             app:menu="@menu/bottom_navigation_menu" />
     </FrameLayout>
 

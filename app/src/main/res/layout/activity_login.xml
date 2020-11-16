@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/color_blue"
+    android:background="@color/color_light_blue"
     android:orientation="vertical"
     tools:context=".activity.LoginActivity">
 
@@ -38,7 +38,8 @@
             android:drawableLeft="@drawable/ic_username"
             android:drawablePadding="@dimen/drawable_padding_10dp"
             android:inputType="text"
-            android:textColor="@color/color_white" />
+            android:textColorHint="@color/color_black"
+            android:textColor="@color/color_black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,6 +48,7 @@
         android:layout_gravity="center_horizontal"
         android:hint="Password"
         android:textColorHint="@color/color_black"
+        android:textColor="@color/color_black"
         app:hintTextAppearance="@color/color_black">
 
         <EditText

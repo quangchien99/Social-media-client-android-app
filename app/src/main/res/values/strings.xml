@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">FacebookApp</string>
     <string-array name="question_array">
-        <item> <font fgcolor='#000000'> What is your favorite book\?</font></item>
+        <item> <font fgcolor='#000000'>Select your secret question\!</font></item>
+        <item> <font fgcolor='#000000'>What is your favorite book\?</font></item>
         <item><font fgcolor='#000000'>What is your nickname\?</font></item>
         <item><font fgcolor='#000000'>What is your favorite food\?</font></item>
         <item><font fgcolor='#000000'>What is your pet\'s name\?</font></item>

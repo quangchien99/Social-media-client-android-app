@@ -51,4 +51,6 @@
     <dimen name="margin_end_40dp">40dp</dimen>
     <dimen name="margin_start_40dp">40dp</dimen>
     <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="margin_start_20dp">20dp</dimen>
+    <dimen name="margin_end_20dp">20dp</dimen>
 </resources>

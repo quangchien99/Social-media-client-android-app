@@ -112,8 +112,8 @@
 
     <Button
         android:id="@+id/btn_update"
-        android:layout_width="@dimen/width_150dp"
-        android:layout_height="@dimen/height_60dp"
+        android:layout_width="@dimen/width_130dp"
+        android:layout_height="@dimen/height_50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_top_10dp"
         android:background="@drawable/custom_button"
